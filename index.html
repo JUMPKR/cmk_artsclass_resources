@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온드림 아츠클래스 자료실</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .artis-red { color: #FF3D00; }
+        .bg-artis { background-color: #FF3D00; }
+        .jump-blue { color: #29B6F6; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-sm p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold artis-red">OnDream Arts Class</h1>
+            <nav class="space-x-4">
+                <a href="#" class="font-medium hover:text-red-500">자료실</a>
+                <a href="#" class="font-medium hover:text-red-500">프로그램 소개</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-12 px-4">
+        <h2 class="text-3xl font-bold mb-8 border-l-4 border-red-500 pl-4">교육 자료실</h2>
+        
+        <div class="mb-6 flex gap-2">
+            <input type="text" placeholder="자료 제목 검색..." class="p-2 border rounded w-full max-w-md">
+            <button class="bg-artis text-white px-6 py-2 rounded">검색</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+                <span class="text-xs font-bold bg-blue-100 text-blue-600 px-2 py-1 rounded">2025 신규</span>
+                <h3 class="text-xl font-semibold mt-2">창의적 예술교육 가이드북</h3>
+                <p class="text-gray-500 mt-2 text-sm">영국 ARTIS의 전문 커리큘럼이 담긴 통합 예술 가이드입니다.</p>
+                <a href="#" class="inline-block mt-4 text-red-500 font-bold">다운로드 (PDF) →</a>
+            </div>
+            </div>
+    </main>
+
+    <footer class="bg-gray-100 py-10 mt-20 border-t">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-wrap justify-center items-center gap-8 mb-6 opacity-80">
+                <span>주최: 현대차 정몽구 재단</span>
+                <span>주관: 사단법인 점프</span>
+                <span>교육: 영국 ARTIS</span>
+            </div>
+            <p class="text-gray-400 text-sm">© 2025 OnDream Arts Class. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
