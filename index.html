@@ -3,84 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMK Artsclass | 보안 아카이브</title>
+    <title>CMK Artsclass | 전용 아카이브</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         .bg-cmk-blue { background-color: #007AFF; }
         .text-cmk-blue { color: #007AFF; }
-        #main-content { display: none; } /* 인증 전까지 숨김 */
-        .gate-input { border-bottom: 2px solid white; background: transparent; text-align: center; font-size: 2rem; outline: none; }
+        .cmk-main-title { transform: skew(-6deg); display: inline-block; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1.5rem; }
+        
+        /* 보안 게이트 */
+        #secure-gate { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; }
+        .gate-input { border-bottom: 2px solid white; background: transparent; text-align: center; font-size: 2rem; outline: none; width: 180px; color: white; }
+        #main-app { display: none; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-gray-900">
 
-    <div id="secure-gate" class="fixed inset-0 z-[100] bg-cmk-blue flex flex-col items-center justify-center text-white p-6">
-        <div class="mb-10 text-center">
-            <h1 class="text-3xl font-black italic mb-2">CMK Artsclass</h1>
-            <p class="opacity-80">행사 참여 코드를 입력해주세요.</p>
+    <div id="secure-gate" class="bg-cmk-blue text-white">
+        <div class="text-center p-6">
+            <div class="bg-white text-cmk-blue px-6 py-2 cmk-main-title mb-8 font-900 italic text-xl">CMK Artsclass</div>
+            <p class="mb-6 font-bold opacity-80 text-sm">참여 코드를 입력하세요.</p>
+            <input type="password" id="entry-code" class="gate-input mb-8" placeholder="****" maxlength="4" onkeyup="if(window.event.keyCode==13){checkCode()}">
+            <br>
+            <button onclick="checkCode()" class="bg-white text-cmk-blue px-10 py-3 rounded-full font-black hover:scale-105 transition shadow-lg">ENTER</button>
+            <p id="error-txt" class="mt-4 text-red-200 text-xs hidden font-bold">코드가 올바르지 않습니다.</p>
         </div>
-        <input type="password" id="passcode" class="gate-input w-48 mb-8" maxlength="4" placeholder="****">
-        <button onclick="checkPasscode()" class="bg-white text-cmk-blue px-10 py-3 rounded-full font-bold hover:bg-gray-100 transition">접속하기</button>
-        <p id="error-msg" class="mt-4 text-red-300 text-sm hidden">코드가 일치하지 않습니다.</p>
     </div>
 
-    <div id="main-content">
-        <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b py-4 px-6 flex justify-between items-center">
-            <img src="주최_현대차 정몽구 재단.png" class="h-7 md:h-8">
-            <div class="flex items-center gap-4">
-                <button onclick="openCheckIn()" class="bg-cmk-blue text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg">출석 확인</button>
-                <a href="javascript:location.reload()" class="text-xs font-bold text-gray-400 italic">LOGOUT</a>
+    <div id="main-app">
+        <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b py-3 px-6 flex justify-between items-center">
+            <img src="주최_현대차 정몽구 재단.png" class="h-6 md:h-7">
+            <div class="flex items-center gap-3">
+                <a href="#attendance" class="bg-cmk-blue text-white px-4 py-2 rounded-full text-[11px] font-black">출석체크</a>
+                <button onclick="location.reload()" class="text-[10px] font-bold text-gray-400 border-l pl-3 ml-1 italic uppercase">Logout</button>
             </div>
         </nav>
 
-        <section class="pt-32 pb-20 px-6 text-center">
-             <h2 class="text-2xl font-black italic text-cmk-blue">WELCOME, TEACHER!</h2>
-             <p class="text-gray-500 mt-2">오늘 연수도 예술과 함께 행복한 시간 되세요.</p>
-        </section>
-        
-        <section id="attendance" class="py-10 bg-blue-50 mx-6 rounded-[2rem] hidden">
-            <div class="max-w-md mx-auto text-center p-8">
-                <h3 class="font-bold text-xl mb-4">오늘의 출석 확인</h3>
-                <input type="text" id="teacher-name" placeholder="성함" class="w-full p-3 mb-2 rounded-lg border">
-                <input type="text" id="teacher-school" placeholder="소속 학교" class="w-full p-3 mb-4 rounded-lg border">
-                <button onclick="submitAttendance()" class="w-full bg-cmk-blue text-white py-3 rounded-lg font-bold">출석 완료</button>
+        <section class="relative min-h-[60vh] bg-cmk-blue flex flex-col items-center justify-center text-white text-center px-6 pt-16 overflow-hidden">
+            <div class="absolute top-10 -left-10 w-64 h-64 bg-white opacity-5 rounded-full"></div>
+            <div class="relative z-10">
+                <div class="bg-white text-cmk-blue px-6 py-3 cmk-main-title mb-6">
+                    <h1 class="text-4xl md:text-6xl font-900 italic tracking-tighter">CMK Artsclass</h1>
+                </div>
+                <p class="text-lg md:text-xl font-bold opacity-90">창의예술교육 교사 연수 아카이브</p>
             </div>
         </section>
+
+        <section id="about" class="py-20 bg-white px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h3 class="text-2xl font-black mb-8 italic text-cmk-blue tracking-tight uppercase">About Program</h3>
+                <div class="space-y-6 text-gray-700 text-base md:text-lg leading-loose font-medium px-4">
+                    <p><b>CMK Artsclass</b>는 현대차 정몽구 재단과 사단법인 점프, 영국 Artis가 함께하는 초등 교사 대상 창의예술교육 전문 연수 프로그램입니다.</p>
+                    <p>단계별 연수를 통해 음악, 드라마, 무용이 교과와 통합된 교수법을 학습하며, 연수 이후에도 밋업과 연구 지원 등 지속적인 교사 커뮤니티 케어를 제공합니다.</p>
+                    <p>예술을 통해 아이들과 교사가 모두 행복해지는 교실, 그 지속 가능한 변화의 여정을 <b>CMK Artsclass</b>가 든든하게 지원합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="attendance" class="py-20 bg-blue-50 px-6">
+            <div class="container mx-auto max-w-3xl bg-white p-6 md:p-10 rounded-[2.5rem] shadow-lg border-2 border-cmk-blue">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-black italic">오늘의 출석 확인</h2>
+                    <p class="text-gray-500 text-sm mt-1">교사 DB 관리를 위해 정보를 입력해주세요.</p>
+                </div>
+                <div class="video-container" style="padding-bottom: 140%;">
+                    <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" frameborder="0">로드 중…</iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="video" class="py-20 bg-white px-6">
+            <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/ctjmiSizjoY?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/x3iMHmJe4QY?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="archive" class="py-20 bg-gray-50 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <h3 class="text-2xl font-black italic mb-10 border-l-6 border-cmk-blue pl-4 uppercase">Archive</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-8 border-2 bg-white rounded-[2rem] hover:border-cmk-blue transition shadow-sm group">
+                        <h4 class="text-xl font-bold mb-4 group-hover:text-cmk-blue">2025 통합 가이드북</h4>
+                        <a href="#" class="inline-block font-black border-b-2 border-black pb-1 text-sm hover:border-cmk-blue hover:text-cmk-blue">DOWNLOAD PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-white border-t py-16 px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-10 mb-8 opacity-60">
+                <img src="주최_현대차 정몽구 재단.png" class="h-6">
+                <img src="로고_점프.png" class="h-6">
+                <img src="Logo_MASTER_Artis_logo_red.jpg" class="h-8">
+            </div>
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">© 2026 CMK Artsclass Archive. All Rights Reserved.</p>
+        </footer>
     </div>
 
     <script>
-        // 1. 보안 코드 확인 로직
-        function checkPasscode() {
-            const code = document.getElementById('passcode').value;
-            if(code === "1234") { // 실제 코드로 변경하세요
-                document.getElementById('secure-gate').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            } else {
-                document.getElementById('error-msg').classList.remove('hidden');
-            }
-        }
-
-        // 2. 출석 체크 열기
-        function openCheckIn() {
-            const section = document.getElementById('attendance');
-            section.classList.toggle('hidden');
-            window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
-        }
-
-        // 3. 데이터 저장 로직 (Google Sheets 연결 시 활용)
-        function submitAttendance() {
-            const name = document.getElementById('teacher-name').value;
-            const school = document.getElementById('teacher-school').value;
+        function checkCode() {
+            const input = document.getElementById('entry-code').value;
+            const correctCode = "2025"; // 입장 코드 설정
             
-            if(!name || !school) {
-                alert("정보를 모두 입력해주세요.");
-                return;
+            if(input === correctCode) {
+                document.getElementById('secure-gate').style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+                window.scrollTo(0,0);
+            } else {
+                document.getElementById('error-txt').classList.remove('hidden');
+                document.getElementById('entry-code').value = '';
             }
-
-            alert(`${name} 선생님, 출석이 완료되었습니다!`);
-            // 여기에 Google Sheets API 전송 코드를 넣습니다.
-            document.getElementById('attendance').classList.add('hidden');
         }
     </script>
 </body>
