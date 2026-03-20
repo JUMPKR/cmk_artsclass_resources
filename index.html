@@ -3,151 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMK Artsclass | 아카이브</title>
+    <title>CMK Artsclass | 보안 아카이브</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         .bg-cmk-blue { background-color: #007AFF; }
         .text-cmk-blue { color: #007AFF; }
-        /* 포스터의 타이틀 쉐입 */
-        .cmk-main-title { 
-            transform: skew(-6deg); 
-            display: inline-block;
-            box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
-        }
-        /* 유튜브 반응형 컨테이너 */
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 1.5rem; }
-        .bounce { animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        #main-content { display: none; } /* 인증 전까지 숨김 */
+        .gate-input { border-bottom: 2px solid white; background: transparent; text-align: center; font-size: 2rem; outline: none; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50">
 
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b py-4 px-6">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="https://www.hyundai-cmkfoundation.org/" target="_blank">
-                <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-7 md:h-9 hover:opacity-70 transition">
-            </a>
-            <div class="flex space-x-5 md:space-x-8 text-xs md:text-sm font-black tracking-tighter uppercase">
-                <a href="#about" class="hover:text-blue-600 transition">Program</a>
-                <a href="#video" class="hover:text-blue-600 transition text-blue-600">Video</a>
-                <a href="#archive" class="hover:text-blue-600 transition">Archive</a>
-            </div>
+    <div id="secure-gate" class="fixed inset-0 z-[100] bg-cmk-blue flex flex-col items-center justify-center text-white p-6">
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl font-black italic mb-2">CMK Artsclass</h1>
+            <p class="opacity-80">행사 참여 코드를 입력해주세요.</p>
         </div>
-    </nav>
+        <input type="password" id="passcode" class="gate-input w-48 mb-8" maxlength="4" placeholder="****">
+        <button onclick="checkPasscode()" class="bg-white text-cmk-blue px-10 py-3 rounded-full font-bold hover:bg-gray-100 transition">접속하기</button>
+        <p id="error-msg" class="mt-4 text-red-300 text-sm hidden">코드가 일치하지 않습니다.</p>
+    </div>
 
-    <section class="relative min-h-screen bg-cmk-blue flex flex-col items-center justify-center text-white px-6 overflow-hidden">
-        <div class="absolute top-20 -left-20 w-96 h-96 bg-white opacity-10 rounded-full"></div>
-        <div class="absolute bottom-10 -right-20 w-[500px] h-[500px] border-[40px] border-white opacity-5 rounded-full"></div>
-
-        <div class="relative z-10 text-center">
-            <p class="text-sm md:text-xl font-bold tracking-[0.3em] mb-6 opacity-90 uppercase">Creative Arts Education</p>
-            <div class="bg-white px-8 py-4 md:px-12 md:py-6 cmk-main-title mb-10">
-                <h1 class="text-4xl md:text-8xl font-900 text-cmk-blue italic tracking-tighter">CMK Artsclass</h1>
+    <div id="main-content">
+        <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b py-4 px-6 flex justify-between items-center">
+            <img src="주최_현대차 정몽구 재단.png" class="h-7 md:h-8">
+            <div class="flex items-center gap-4">
+                <button onclick="openCheckIn()" class="bg-cmk-blue text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg">출석 확인</button>
+                <a href="javascript:location.reload()" class="text-xs font-bold text-gray-400 italic">LOGOUT</a>
             </div>
-            <p class="text-lg md:text-3xl font-bold leading-relaxed max-w-4xl mx-auto">
-                예술로 변화하는 교실,<br class="md:hidden"> 교사가 여는 미래를 아카이브 합니다.
-            </p>
-        </div>
+        </nav>
 
-        <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 bounce">
-            <svg class="w-8 h-8 text-white opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </a>
-    </section>
+        <section class="pt-32 pb-20 px-6 text-center">
+             <h2 class="text-2xl font-black italic text-cmk-blue">WELCOME, TEACHER!</h2>
+             <p class="text-gray-500 mt-2">오늘 연수도 예술과 함께 행복한 시간 되세요.</p>
+        </section>
+        
+        <section id="attendance" class="py-10 bg-blue-50 mx-6 rounded-[2rem] hidden">
+            <div class="max-w-md mx-auto text-center p-8">
+                <h3 class="font-bold text-xl mb-4">오늘의 출석 확인</h3>
+                <input type="text" id="teacher-name" placeholder="성함" class="w-full p-3 mb-2 rounded-lg border">
+                <input type="text" id="teacher-school" placeholder="소속 학교" class="w-full p-3 mb-4 rounded-lg border">
+                <button onclick="submitAttendance()" class="w-full bg-cmk-blue text-white py-3 rounded-lg font-bold">출석 완료</button>
+            </div>
+        </section>
+    </div>
 
-    <section id="about" class="py-32 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl text-center md:text-left">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl font-black mb-8 italic text-cmk-blue uppercase tracking-tight">About Program</h2>
-                    <p class="text-xl font-bold mb-8 leading-snug">
-                        현대차 정몽구 재단과 사단법인 점프,<br>영국 Artis가 함께 디자인한 예술 교육.
-                    </p>
-                    <div class="space-y-6 text-gray-600 text-lg leading-loose">
-                        <p><b>CMK Artsclass</b>는 현대차 정몽구 재단과 점프, 영국 Artis가 함께하는 초등 교사 대상 창의예술교육 전문 연수 프로그램입니다. 단계별 연수를 통해 예술 통합 교수법을 학습하고, 연수 이후에도 밋업과 연구 지원 등 지속적인 교사 커뮤니티 케어를 제공합니다. 예술을 통해 아이들과 교사가 모두 행복해지는 교실, 그 지속 가능한 변화의 여정을 CMK Artsclass가 지원합니다.</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-blue-50 rounded-[2.5rem] p-8 text-center hover:scale-105 transition shadow-sm">
-                        <span class="text-4xl mb-2 block">🎨</span>
-                        <h4 class="font-bold">Creativity</h4>
-                    </div>
-                    <div class="bg-gray-100 rounded-[2.5rem] p-8 text-center hover:scale-105 transition shadow-sm mt-8">
-                        <span class="text-4xl mb-2 block">🇬🇧</span>
-                        <h4 class="font-bold">Global</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        // 1. 보안 코드 확인 로직
+        function checkPasscode() {
+            const code = document.getElementById('passcode').value;
+            if(code === "1234") { // 실제 코드로 변경하세요
+                document.getElementById('secure-gate').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        }
 
-   <section id="video" class="py-32 bg-gray-50 px-6">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-black italic mb-4 uppercase tracking-tighter">Insight Video</h3>
-                <div class="h-1.5 w-20 bg-cmk-blue mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="group">
-                    <div class="video-container shadow-2xl group-hover:ring-4 ring-cmk-blue transition-all">
-                        <iframe 
-                            src="https://www.youtube.com/embed/ctjmiSizjoY?rel=0&modestbranding=1" 
-                            title="CMK Artsclass 2024 Sketch" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="mt-6 text-center font-bold text-gray-700">2024 CMK Artsclass 현장 스케치</p>
-                </div>
-                <div class="group">
-                    <div class="video-container shadow-2xl group-hover:ring-4 ring-cmk-blue transition-all">
-                        <iframe 
-                            src="https://www.youtube.com/embed/x3iMHmJe4QY?rel=0&modestbranding=1" 
-                            title="Artis Mentor Interview" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="mt-6 text-center font-bold text-gray-700">영국 Artis 멘토 인터뷰 및 프로그램 소개</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        // 2. 출석 체크 열기
+        function openCheckIn() {
+            const section = document.getElementById('attendance');
+            section.classList.toggle('hidden');
+            window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
+        }
 
-    <section id="archive" class="py-32 bg-white px-6">
-        <div class="container mx-auto max-w-6xl">
-            <h3 class="text-4xl font-black italic mb-16 border-l-8 border-cmk-blue pl-6 uppercase tracking-tight">Archive</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group border-2 border-gray-100 rounded-[2.5rem] p-10 hover:border-cmk-blue transition-all bg-white hover:shadow-2xl">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cmk-blue transition-colors">
-                        <svg class="w-6 h-6 text-cmk-blue group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 group-hover:text-cmk-blue transition-colors">2025 통합 가이드북</h4>
-                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">현장 수업에서 바로 활용 가능한 예술교육 매뉴얼입니다.</p>
-                    <a href="#" class="inline-block font-black border-b-4 border-gray-900 group-hover:border-cmk-blue pb-1 transition-all">DOWNLOAD PDF</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        // 3. 데이터 저장 로직 (Google Sheets 연결 시 활용)
+        function submitAttendance() {
+            const name = document.getElementById('teacher-name').value;
+            const school = document.getElementById('teacher-school').value;
+            
+            if(!name || !school) {
+                alert("정보를 모두 입력해주세요.");
+                return;
+            }
 
-    <footer class="bg-white border-t py-20 px-6">
-        <div class="container mx-auto text-center">
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-24 mb-16 opacity-80">
-                <img src="주최_현대차 정몽구 재단.png" alt="재단" class="h-7 md:h-9">
-                <img src="로고_점프.png" alt="점프" class="h-7 md:h-9">
-                <img src="Logo_MASTER_Artis_logo_red.jpg" alt="Artis" class="h-10 md:h-12">
-            </div>
-            <div class="text-xs md:text-sm font-bold text-gray-400 space-y-3">
-                <p>주최 : 현대차 정몽구 재단 | 주관 : 사단법인 점프 | 교육 : 영국 ARTIS</p>
-                <p class="text-[10px] uppercase tracking-[0.4em] mt-6">© 2026 CMK Artsclass Archive. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+            alert(`${name} 선생님, 출석이 완료되었습니다!`);
+            // 여기에 Google Sheets API 전송 코드를 넣습니다.
+            document.getElementById('attendance').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
