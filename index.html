@@ -3,93 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 온드림 아츠클래스 자료실</title>
+    <title>CMK Artsclass 자료실</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
-        .bg-ondream-blue { background-color: #1A73E8; } /* 포스터의 메인 블루 */
-        .text-ondream-blue { color: #1A73E8; }
-        .skew-title { transform: skew(-5deg) rotate(-1deg); } /* 포스터 타이틀 느낌 */
-        .shape-curve { border-radius: 0 0 50% 50% / 0 0 10% 10%; }
+        .bg-cmk-blue { background-color: #007AFF; } /* 포스터의 선명한 블루 */
+        .text-cmk-blue { color: #007AFF; }
+        /* 포스터의 역동적인 타이틀 느낌 */
+        .cmk-main-title { 
+            transform: skew(-6deg); 
+            display: inline-block;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white py-4 px-6 sticky top-0 z-50 shadow-sm">
+    <header class="bg-white py-5 px-6 sticky top-0 z-50 shadow-sm border-b border-gray-100">
         <div class="container mx-auto flex justify-between items-center">
-            <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-8 md:h-10">
-            <nav class="hidden md:flex space-x-6 text-sm font-bold text-gray-600">
-                <a href="#" class="hover:text-blue-600">프로그램 소개</a>
-                <a href="#" class="text-blue-600">교육 자료실</a>
+            <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-8 md:h-10 object-contain">
+            <nav class="hidden md:flex space-x-10 text-sm font-bold text-gray-700 tracking-tight">
+                <a href="#" class="hover:text-blue-600 transition">PROGRAM</a>
+                <a href="#" class="text-blue-600">ARCHIVE</a>
+                <a href="#" class="hover:text-blue-600 transition">CONTACT</a>
             </nav>
         </div>
     </header>
 
-    <section class="bg-ondream-blue text-white py-20 px-6 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-20 -mt-20"></div>
-        
+    <section class="bg-cmk-blue text-white py-24 px-6 relative overflow-hidden">
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-white opacity-10 rounded-full"></div>
+        <div class="absolute top-10 right-10 w-40 h-40 border-4 border-white opacity-20 rounded-full"></div>
+
         <div class="container mx-auto relative z-10 text-center">
-            <p class="text-lg mb-4 font-bold tracking-tighter opacity-90">창의예술교육 교사연수 프로그램</p>
-            <h1 class="text-5xl md:text-7xl font-900 mb-8 skew-title inline-block bg-white text-ondream-blue px-6 py-2">
-                온드림 아츠클래스
-            </h1>
-            <h2 class="text-2xl md:text-3xl font-bold mt-4">자료실</h2>
+            <p class="text-sm md:text-base font-bold tracking-[0.2em] mb-6 opacity-90 uppercase">Creative Arts Education Archive</p>
+            <div class="bg-white px-8 py-4 cmk-main-title">
+                <h1 class="text-4xl md:text-6xl font-900 text-cmk-blue italic">CMK Artsclass</h1>
+            </div>
+            <p class="mt-10 text-lg md:text-xl font-medium opacity-80">2025 창의예술교육 교사연수 프로그램 자료실</p>
         </div>
     </section>
 
-    <div class="container mx-auto px-6 -mt-8 relative z-20">
-        <div class="bg-white p-4 rounded-xl shadow-xl flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder="필요한 교육 자료를 검색하세요" class="flex-grow p-4 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button class="bg-ondream-blue text-white px-10 py-4 rounded-lg font-bold hover:bg-blue-700 transition">검색하기</button>
-        </div>
-    </div>
-
     <main class="container mx-auto py-16 px-6">
-        <div class="flex items-center justify-between mb-10">
-            <h3 class="text-2xl font-bold border-l-8 border-ondream-blue pl-4">전체 자료</h3>
-            <span class="text-gray-500">총 12개의 자료가 있습니다.</span>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <h2 class="text-3xl font-black text-gray-900 mb-2 tracking-tighter">RESOURCE CENTER</h2>
+                <p class="text-gray-500">교육 현장에서 바로 활용 가능한 아카이브 자료입니다.</p>
+            </div>
+            <div class="flex gap-2">
+                <button class="px-4 py-2 bg-gray-900 text-white rounded-full text-xs font-bold">전체</button>
+                <button class="px-4 py-2 bg-white text-gray-400 border border-gray-200 rounded-full text-xs font-bold hover:bg-gray-50">가이드북</button>
+                <button class="px-4 py-2 bg-white text-gray-400 border border-gray-200 rounded-full text-xs font-bold hover:bg-gray-50">영상자료</button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white border-2 border-gray-100 rounded-3xl overflow-hidden hover:border-ondream-blue transition-all group">
-                <div class="p-8">
-                    <div class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-widest">ARTIS Curriculum</div>
-                    <h4 class="text-xl font-bold mb-4 group-hover:text-ondream-blue transition">2025 교사연수 가이드북</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-6">포스터에 명시된 신규/알럼나이 교사 프로그램을 위한 통합 예술교육 매뉴얼입니다.</p>
-                    <a href="#" class="flex items-center justify-center bg-gray-100 group-hover:bg-ondream-blue group-hover:text-white py-3 rounded-xl font-bold transition">
-                        자료 다운로드
-                    </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="group bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl transition-all border border-gray-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-blue-50 group-hover:bg-cmk-blue transition-colors rounded-bl-[2rem] flex items-center justify-center">
+                    <span class="text-cmk-blue group-hover:text-white font-bold italic">25</span>
                 </div>
+                <h3 class="text-xl font-bold mb-4 mt-4 leading-tight group-hover:text-cmk-blue transition">2025 CMK Artsclass<br>통합 교육 가이드북</h3>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">영국 Artis의 멘토들과 함께 구성한 창의예술교육의 핵심 가이드입니다.</p>
+                <a href="#" class="inline-flex items-center text-sm font-black border-b-2 border-black group-hover:border-cmk-blue pb-1 transition-all">
+                    DOWNLOAD PDF
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
             </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-200 py-16">
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-10">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 mb-12">
-                <div class="text-center">
-                    <p class="text-[10px] text-gray-400 font-bold mb-3 uppercase tracking-tighter">주최</p>
-                    <img src="주최_현대차 정몽구 재단.png" alt="재단" class="h-8 grayscale hover:grayscale-0 transition opacity-80 hover:opacity-100 mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-24 mb-16">
+                <div class="flex flex-col items-center gap-3">
+                    <span class="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">Hosted by</span>
+                    <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-8 md:h-10">
                 </div>
-                <div class="text-center">
-                    <p class="text-[10px] text-gray-400 font-bold mb-3 uppercase tracking-tighter">주관</p>
-                    <img src="로고_점프.png" alt="점프" class="h-8 grayscale hover:grayscale-0 transition opacity-80 hover:opacity-100 mx-auto">
+                <div class="flex flex-col items-center gap-3">
+                    <span class="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">Managed by</span>
+                    <img src="로고_점프.png" alt="사단법인 점프" class="h-8 md:h-10">
                 </div>
-                <div class="text-center">
-                    <p class="text-[10px] text-gray-400 font-bold mb-3 uppercase tracking-tighter">교육</p>
-                    <img src="Logo_MASTER_Artis_logo_red.jpg" alt="Artis" class="h-10 grayscale hover:grayscale-0 transition opacity-80 hover:opacity-100 mx-auto">
+                <div class="flex flex-col items-center gap-3">
+                    <span class="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">Education by</span>
+                    <img src="Logo_MASTER_Artis_logo_red.jpg" alt="영국 Artis" class="h-10 md:h-12">
                 </div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-4 text-xs font-bold text-gray-500 border-t pt-8">
-                <span>주최 : 현대차 정몽구 재단</span>
-                <span class="text-gray-300">|</span>
-                <span>주관 : 사단법인 점프</span>
-                <span class="text-gray-300">|</span>
-                <span>교육 : 영국 ARTIS</span>
+            <div class="max-w-4xl mx-auto border-t border-gray-100 pt-10 text-center">
+                <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-10 mb-8 font-bold text-xs md:text-sm text-gray-500">
+                    <p><span class="text-gray-400 mr-2">주최</span>현대차 정몽구 재단</p>
+                    <p><span class="text-gray-400 mr-2">주관</span>사단법인 점프</p>
+                    <p><span class="text-gray-400 mr-2">교육</span>영국 ARTIS</p>
+                </div>
+                <p class="text-[10px] text-gray-400 tracking-widest uppercase">© 2026 CMK Artsclass. All Rights Reserved.</p>
             </div>
-            <p class="text-center text-[10px] text-gray-400 mt-6 tracking-widest uppercase">© 2025 ONDREAM ARTS CLASS ARCHIVE</p>
         </div>
     </footer>
 
