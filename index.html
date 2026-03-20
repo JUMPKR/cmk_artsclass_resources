@@ -19,8 +19,8 @@
         #top-btn { 
             display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
             background-color: #007AFF; color: white; width: 50px; height: 50px; 
-            border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            border-radius: 50%; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;
         }
         #top-btn:hover { transform: translateY(-5px); background-color: #0056b3; }
 
@@ -36,15 +36,16 @@
 <body class="bg-gray-50 text-gray-900">
 
     <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b py-3 px-6 flex justify-between items-center">
-        <div class="flex items-center gap-6">
-            <a href="#" class="flex items-center">
-                <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-6 md:h-7">
+        <div class="flex items-center">
+            <a href="#" onclick="scrollToTop()">
+                <img src="주최_현대차 정몽구 재단.png" alt="현대차 정몽구 재단" class="h-6 md:h-7 transition hover:opacity-70">
             </a>
-            <a href="#" class="hidden md:block text-xs font-black text-gray-400 hover:text-cmk-blue transition">HOME</a>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-4 md:gap-8">
+            <a href="#" class="text-[11px] md:text-xs font-black text-gray-400 hover:text-cmk-blue transition">홈</a>
+            <a href="#about" class="text-[11px] md:text-xs font-black text-gray-400 hover:text-cmk-blue transition">프로그램 소개</a>
+            <a href="#archive" class="text-[11px] md:text-xs font-black text-gray-400 hover:text-cmk-blue transition">아카이브</a>
             <a href="#attendance" class="bg-cmk-blue text-white px-4 py-2 rounded-full text-[11px] font-black shadow-md hover:scale-105 transition">출석체크</a>
-            <a href="#archive" class="text-[11px] font-black text-gray-500 border-l pl-3 ml-1 uppercase">Archive</a>
         </div>
     </nav>
 
@@ -58,9 +59,9 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white px-6">
+    <section id="about" class="py-24 bg-white px-6">
         <div class="container mx-auto max-w-4xl text-center">
-            <h3 class="text-2xl font-black mb-10 italic text-cmk-blue uppercase">Program Info</h3>
+            <h3 class="text-2xl font-black mb-10 italic text-cmk-blue uppercase tracking-tight">Program Info</h3>
             <div class="space-y-6 text-gray-700 text-base md:text-lg leading-loose font-medium px-4">
                 <p><b>CMK Artsclass</b>는 현대차 정몽구 재단과 사단법인 점프, 영국 Artis가 함께하는 초등 교사 대상 창의예술교육 전문 연수 프로그램입니다.</p>
                 <p>단계별 연수를 통해 음악, 드라마, 무용이 교과와 통합된 교수법을 학습하며, 연수 이후에도 밋업과 연구 지원 등 지속적인 교사 커뮤니티 케어를 제공합니다.</p>
@@ -69,59 +70,60 @@
         </div>
     </section>
 
-    <section id="attendance" class="py-20 bg-blue-50 px-6">
-        <div class="container mx-auto max-w-3xl relative min-h-[600px] bg-white rounded-[2.5rem] shadow-xl border-2 border-cmk-blue overflow-hidden">
+    <section id="archive" class="py-24 bg-gray-50 px-6 border-t border-b">
+        <div class="container mx-auto max-w-6xl">
+            <h3 class="text-2xl font-black italic mb-12 border-l-6 border-cmk-blue pl-4 uppercase tracking-tighter text-cmk-blue">Archive</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/ctjmiSizjoY?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-container shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/x3iMHmJe4QY?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-8 border bg-white rounded-[2rem] hover:border-cmk-blue transition shadow-sm group">
+                    <h4 class="text-xl font-bold mb-4 group-hover:text-cmk-blue transition-colors">2025 통합 가이드북</h4>
+                    <p class="text-gray-400 text-sm mb-6">수업 현장에서 바로 활용 가능한 핵심 매뉴얼 PDF입니다.</p>
+                    <a href="#" class="inline-block font-black border-b-2 border-black pb-1 text-sm hover:border-cmk-blue hover:text-cmk-blue transition-all">DOWNLOAD PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="attendance" class="py-24 bg-blue-50 px-6">
+        <div class="container mx-auto max-w-3xl relative min-h-[650px] bg-white rounded-[3rem] shadow-2xl border-4 border-white overflow-hidden">
             
             <div id="attendance-gate">
-                <div class="text-center p-6">
-                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </div>
-                    <h2 class="text-xl font-black mb-6">출석 확인을 위해<br>참여 코드를 입력하세요</h2>
-                    <input type="password" id="entry-code" class="bg-transparent border-b-2 border-white text-center text-2xl outline-none w-32 mb-8 tracking-[0.5rem]" placeholder="****" maxlength="4">
+                <div class="text-center p-8">
+                    <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4">Verification</div>
+                    <h2 class="text-2xl md:text-3xl font-black mb-2 tracking-tighter">2025 CMK Artsclass<br>신규 교사 연수</h2>
+                    <p class="opacity-70 text-sm mb-10">참여 확인을 위해 코드를 입력해주세요.</p>
+                    
+                    <input type="password" id="entry-code" class="bg-transparent border-b-2 border-white text-center text-3xl outline-none w-32 mb-10 tracking-[0.5rem]" placeholder="****" maxlength="4" onkeyup="if(window.event.keyCode==13){unlockAttendance()}">
                     <br>
-                    <button onclick="unlockAttendance()" class="bg-white text-cmk-blue px-10 py-3 rounded-full font-black hover:scale-105 transition uppercase text-sm shadow-lg">Unlock</button>
+                    <button onclick="unlockAttendance()" class="bg-white text-cmk-blue px-12 py-3 rounded-full font-black hover:scale-105 transition shadow-lg text-sm">확인</button>
                     <p id="error-txt" class="mt-4 text-red-200 text-xs hidden font-bold">코드가 올바르지 않습니다.</p>
                 </div>
             </div>
 
-            <div id="attendance-content" class="p-6 md:p-10 opacity-0 transition-opacity duration-1000">
+            <div id="attendance-content" class="p-6 md:p-10 opacity-0 transition-opacity duration-700">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl font-black italic">오늘의 출석 확인</h2>
-                    <p class="text-gray-500 text-sm mt-2">입력하신 정보는 교사 DB 관리용으로만 사용됩니다.</p>
+                    <span class="text-cmk-blue font-black text-xs tracking-widest uppercase">Database</span>
+                    <h2 class="text-2xl font-black italic mt-1">출석 확인</h2>
+                    <p class="text-gray-500 text-sm mt-2 font-medium">참여하신 교사 분들의 정보를 정확히 입력해주세요.</p>
                 </div>
-                <div class="video-container" style="padding-bottom: 120%;">
+                <div class="video-container" style="padding-bottom: 140%;">
                     <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" frameborder="0">로드 중…</iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="video" class="py-20 bg-white px-6">
-        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="video-container shadow-xl">
-                <iframe src="https://www.youtube.com/embed/ctjmiSizjoY" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-container shadow-xl">
-                <iframe src="https://www.youtube.com/embed/x3iMHmJe4QY" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section id="archive" class="py-20 bg-gray-50 px-6 border-t">
-        <div class="container mx-auto max-w-6xl">
-            <h3 class="text-2xl font-black italic mb-10 border-l-6 border-cmk-blue pl-4">ARCHIVE</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-8 border bg-white rounded-[2rem] hover:border-cmk-blue transition shadow-sm group">
-                    <h4 class="text-xl font-bold mb-4 group-hover:text-cmk-blue">2025 통합 가이드북</h4>
-                    <a href="#" class="inline-block font-black border-b-2 border-black pb-1 text-sm hover:border-cmk-blue transition-all">DOWNLOAD PDF</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="bg-white border-t py-16 px-6 text-center">
-        <div class="flex flex-wrap justify-center gap-10 mb-8 opacity-50 grayscale hover:grayscale-0 transition-all">
+        <div class="flex flex-wrap justify-center gap-10 mb-8 opacity-40 grayscale">
             <img src="주최_현대차 정몽구 재단.png" class="h-6">
             <img src="로고_점프.png" class="h-6">
             <img src="Logo_MASTER_Artis_logo_red.jpg" class="h-8">
@@ -129,12 +131,12 @@
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">© 2026 CMK Artsclass Archive. All Rights Reserved.</p>
     </footer>
 
-    <button id="top-btn" onclick="scrollToTop()" title="Go to top">
+    <button id="top-btn" onclick="scrollToTop()" title="위로 이동">
         <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
     </button>
 
     <script>
-        // 1. 보안 해제 로직
+        // 1. 출석체크 보안 로직
         function unlockAttendance() {
             const input = document.getElementById('entry-code').value;
             const correctCode = "2025"; // 패스코드 설정
@@ -148,21 +150,21 @@
             } else {
                 document.getElementById('error-txt').classList.remove('hidden');
                 document.getElementById('entry-code').value = '';
+                document.getElementById('entry-code').focus();
             }
         }
 
-        // 2. 탑 버튼 노출 로직
-        window.onscroll = function() { scrollFunction() };
-        function scrollFunction() {
+        // 2. 탑 버튼 표시 로직
+        window.onscroll = function() {
             const btn = document.getElementById("top-btn");
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 btn.style.display = "block";
             } else {
                 btn.style.display = "none";
             }
-        }
+        };
 
-        // 3. 탑 버튼 클릭 이동
+        // 3. 최상단 이동
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
