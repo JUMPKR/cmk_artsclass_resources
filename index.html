@@ -22,12 +22,20 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;
         }
 
-        /* 출석체크 섹션 높이 축소 (세로 5cm 내외 느낌으로 슬림하게) */
-        .attendance-card { min-height: 250px; }
+        /* 출석체크 섹션: 세로 5cm 내외(약 200px)로 고정 */
+        .attendance-slim-box { 
+            height: 180px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
         #attendance-gate {
-            background-color: rgba(0, 122, 255, 0.98);
-            border-radius: 2rem;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-color: #007AFF;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
             position: absolute; inset: 0; z-index: 10; color: white; transition: all 0.5s;
         }
         .collab-line { width: 1px; height: 20px; background-color: #e5e7eb; margin: 10px 0; }
@@ -47,7 +55,7 @@
         </div>
     </nav>
 
-    <section id="home" class="relative min-h-[45vh] bg-cmk-blue flex flex-col items-center justify-center text-white text-center px-6 pt-16 overflow-hidden">
+    <section id="home" class="relative min-h-[40vh] bg-cmk-blue flex flex-col items-center justify-center text-white text-center px-6 pt-16 overflow-hidden">
         <div class="absolute top-10 -left-10 w-64 h-64 bg-white opacity-5 rounded-full"></div>
         <div class="relative z-10">
             <div class="bg-white text-cmk-blue px-6 py-3 cmk-main-title mb-6">
@@ -57,84 +65,86 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white px-6">
+    <section id="about" class="py-20 bg-white px-6">
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
                 <div class="md:w-3/5 text-left">
-                    <h3 class="text-3xl font-black mb-10 italic text-cmk-blue uppercase tracking-tighter border-l-8 border-cmk-blue pl-6">Program Info</h3>
-                    <div class="space-y-6 text-gray-700 text-lg md:text-xl leading-relaxed font-medium">
+                    <h3 class="text-3xl font-black mb-8 italic text-cmk-blue uppercase tracking-tighter border-l-8 border-cmk-blue pl-6">Program Info</h3>
+                    <div class="space-y-4 text-gray-700 text-lg leading-relaxed font-medium">
                         <p><b class="text-cmk-blue">CMK Artsclass</b>는 현대차 정몽구 재단과 사단법인 점프, 영국 Artis가 함께하는 초등 교사 대상 창의예술교육 전문 연수 프로그램입니다.</p>
-                        <p>단계별 연수를 통해 음악, 드라마, 무용이 교과와 통합된 교수법을 학습하며, 지속적인 교사 커뮤니티 케어를 제공합니다.</p>
                         <p>예술을 통해 아이들과 교사가 행복해지는 교실, 그 여정을 <b>CMK Artsclass</b>가 지원합니다.</p>
                     </div>
                 </div>
-                <div class="md:w-2/5 w-full bg-gray-50 rounded-[3rem] p-12 flex flex-col items-center justify-center border border-gray-100">
-                    <p class="text-[10px] font-black text-gray-300 tracking-[0.4em] uppercase mb-10">Partnership</p>
-                    <div class="flex flex-col items-center gap-4">
-                        <img src="주최_현대차 정몽구 재단.png" class="h-8 md:h-9 grayscale hover:grayscale-0 transition duration-500">
+                <div class="md:w-2/5 w-full bg-gray-50 rounded-[2rem] p-8 flex flex-col items-center justify-center border border-gray-100">
+                    <div class="flex flex-col items-center gap-3">
+                        <img src="주최_현대차 정몽구 재단.png" class="h-7 grayscale opacity-70">
                         <div class="collab-line"></div>
-                        <img src="로고_점프.png" class="h-8 md:h-9 grayscale hover:grayscale-0 transition duration-500">
+                        <img src="로고_점프.png" class="h-7 grayscale opacity-70">
                         <div class="collab-line"></div>
-                        <img src="Logo_MASTER_Artis_logo_red.jpg" class="h-12 md:h-14 grayscale hover:grayscale-0 transition duration-500">
+                        <img src="Logo_MASTER_Artis_logo_red.jpg" class="h-10 grayscale opacity-70">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50 px-6 border-t border-b">
+    <section class="py-16 bg-gray-50 px-6 border-t border-b">
         <div class="container mx-auto max-w-6xl">
-            <h3 class="text-xl font-black italic mb-10 text-gray-400 uppercase tracking-widest text-center">Visual Archive</h3>
+            <h3 class="text-sm font-black italic mb-8 text-gray-400 uppercase tracking-[0.3em] text-center">Visual Archive</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="video-container shadow-2xl"><iframe src="https://www.youtube.com/embed/ctjmiSizjoY" frameborder="0" allowfullscreen></iframe></div>
-                <div class="video-container shadow-2xl"><iframe src="https://www.youtube.com/embed/x3iMHmJe4QY" frameborder="0" allowfullscreen></iframe></div>
+                <div class="video-container shadow-xl"><iframe src="https://www.youtube.com/embed/ctjmiSizjoY" frameborder="0" allowfullscreen></iframe></div>
+                <div class="video-container shadow-xl"><iframe src="https://www.youtube.com/embed/x3iMHmJe4QY" frameborder="0" allowfullscreen></iframe></div>
             </div>
         </div>
     </section>
 
-    <section id="archive" class="py-24 bg-white px-6">
+    <section id="archive" class="py-20 bg-white px-6">
         <div class="container mx-auto max-w-6xl">
-            <h3 class="text-2xl font-black italic mb-12 border-l-6 border-cmk-blue pl-4 uppercase tracking-tighter text-cmk-blue">Resource Archive</h3>
-            <div class="max-w-xl">
-                <div class="p-8 border-2 bg-white rounded-[2rem] border-cmk-blue shadow-lg group">
-                    <span class="inline-block bg-cmk-blue text-white text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase">Latest Resource</span>
-                    <h4 class="text-xl font-bold mb-4">숲 속의 아이 교수학습과정안</h4>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">ORE팀(김민정 외 4인)이 연구한 1~12차시 창의예술교육 통합 수업안입니다.</p>
+            <h3 class="text-2xl font-black italic mb-10 border-l-6 border-cmk-blue pl-4 uppercase tracking-tighter text-cmk-blue">Resource Archive</h3>
+            <div class="max-w-md">
+                <div class="p-8 border bg-white rounded-[2rem] border-cmk-blue shadow-md group">
+                    <h4 class="text-xl font-black mb-3 text-gray-800">숲 속의 아이 교수학습과정안</h4>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">ORE팀 연구 1~12차시 창의예술교육 통합 수업안</p>
                     <a href="2025_아츠클래스_창의예술교육과정연구_숲속의 아이 교수학습 과정안(팀ORE).pdf" class="inline-flex items-center font-black border-b-2 border-cmk-blue pb-1 text-sm hover:text-cmk-blue transition-all">DOWNLOAD PDF</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="attendance" class="py-24 bg-blue-50 px-6">
-        <div class="container mx-auto max-w-2xl relative attendance-card bg-white rounded-[2.5rem] shadow-xl overflow-hidden border-2 border-cmk-blue">
-            
-            <div id="attendance-gate">
-                <div class="text-center p-6">
-                    <h2 class="text-xl font-black mb-1">2025 CMK Artsclass 출석체크</h2>
-                    <p class="opacity-70 text-[11px] mb-6 font-bold italic uppercase tracking-wider">Access Code Required</p>
-                    <div class="flex items-center gap-3">
-                        <input type="password" id="entry-code" class="bg-transparent border-b-2 border-white text-center text-xl outline-none w-24 tracking-[0.3rem]" placeholder="****" maxlength="4">
-                        <button onclick="unlockAttendance()" class="bg-white text-cmk-blue px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition uppercase">Verify</button>
+    <section id="attendance" class="py-12 bg-blue-50 px-6">
+        <div class="container mx-auto max-w-4xl overflow-hidden rounded-[2rem] shadow-lg border border-cmk-blue">
+            <div class="attendance-slim-box bg-white">
+                
+                <div id="attendance-gate">
+                    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-10">
+                        <div class="text-center md:text-left">
+                            <h2 class="text-lg font-black tracking-tighter">2025 CMK Artsclass 출석체크</h2>
+                            <p class="text-[10px] opacity-70 font-bold uppercase tracking-widest">Verification Required</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="password" id="entry-code" class="bg-white/20 border border-white/40 rounded-lg px-3 py-2 text-center text-lg outline-none w-24 tracking-[0.2rem] placeholder:text-white/50" placeholder="****" maxlength="4">
+                            <button onclick="unlockAttendance()" class="bg-white text-cmk-blue px-6 py-2 rounded-lg font-black text-xs hover:bg-gray-100 transition shadow-md">확인</button>
+                        </div>
                     </div>
-                    <p id="error-txt" class="mt-3 text-red-200 text-[10px] hidden font-bold">Incorrect code.</p>
+                    <p id="error-txt" class="absolute bottom-4 text-red-200 text-[10px] hidden font-bold">코드가 올바르지 않습니다.</p>
                 </div>
-            </div>
 
-            <div id="attendance-content" class="opacity-0 transition-opacity duration-700">
-                <div class="p-6 text-center border-b border-gray-100">
-                    <h2 class="text-lg font-black italic">출석 확인 진행 중</h2>
+                <div id="attendance-content" class="w-full h-full opacity-0 hidden flex items-center justify-between px-10">
+                    <div class="hidden md:block">
+                        <h2 class="text-cmk-blue font-black italic">출석 확인 완료</h2>
+                        <p class="text-xs text-gray-400">우측 폼을 작성해 주세요.</p>
+                    </div>
+                    <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" width="100%" height="150" frameborder="0" class="rounded-xl border border-gray-100">로드 중…</iframe>
                 </div>
-                <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" width="100%" height="500" frameborder="0">로드 중…</iframe>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t py-12 px-6 text-center">
-        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">© 2026 CMK Artsclass Archive.</p>
+    <footer class="bg-white border-t py-10 px-6 text-center text-[10px] font-bold text-gray-300 uppercase tracking-[0.2em]">
+        © 2026 CMK Artsclass Archive.
     </footer>
 
-    <button id="top-btn" onclick="scrollToTop()"><svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg></button>
+    <button id="top-btn" onclick="scrollToTop()"><svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg></button>
 
     <script>
         function unlockAttendance() {
@@ -143,6 +153,7 @@
                 document.getElementById('attendance-gate').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('attendance-gate').style.display = 'none';
+                    document.getElementById('attendance-content').classList.remove('hidden');
                     document.getElementById('attendance-content').style.opacity = '1';
                 }, 500);
             } else {
